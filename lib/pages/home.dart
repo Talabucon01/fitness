@@ -44,8 +44,8 @@ class _HomePageState extends State<HomePage> {
       context,
       MaterialPageRoute(
         builder: (context) => ProfilePage(
-          userName: 'Philip Greg Ray M. Hablo',             // Pass user name here
-          userEmail: 'Phablo@filamer.edu.ph', // Pass user email here
+          userName: 'Mark Ivan Talabucon',             // Pass user name here
+          userEmail: 'Mtalabucon@filamer.edu.ph', // Pass user email here
           // optionally pass profileImageUrl etc.
         ),
       ),

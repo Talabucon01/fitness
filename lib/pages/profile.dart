@@ -19,121 +19,100 @@ class ProfilePage extends StatelessWidget {
         title: const Text(
           'Profile',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: 24,
           ),
         ),
-        backgroundColor: Colors.white,
-        elevation: 0,
+        backgroundColor: Colors.teal,
+        elevation: 4,
         centerTitle: true,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView( // Wrap with SingleChildScrollView
+      backgroundColor: Colors.teal[50],
+      body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
           child: Column(
             children: [
               CircleAvatar(
-                radius: 60,
+                radius: 70,
                 backgroundImage: profileImageUrl != null
                     ? NetworkImage(profileImageUrl!)
                     : const AssetImage('assets/images/profile_placeholder.png')
                         as ImageProvider,
-                backgroundColor: Colors.grey[200],
+                backgroundColor: Colors.grey[300],
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 20),
               Text(
                 userName,
                 style: const TextStyle(
-                  fontSize: 26,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: Colors.teal,
                 ),
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               Text(
                 userEmail,
                 style: const TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: Colors.tealAccent,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               const SizedBox(height: 30),
 
-              // Additional Information - You can customize or add any other details here
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 20,
-                    horizontal: 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        'About Me',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Passionate about healthy living and fitness. Enjoy cooking nutritious meals and exploring new diets that boost wellness.',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              // About Me Card
+              _buildInfoCard(
+                title: 'About Me',
+                content:
+                    'Passionate about healthy living and fitness. Enjoy cooking nutritious meals and exploring new diets that boost wellness.',
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 20),
 
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 20,
-                    horizontal: 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        'Membership',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Premium Member since Jan 2023',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              // Membership Card
+              _buildInfoCard(
+                title: 'Membership',
+                content: 'Premium Member since Jan 2023',
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoCard({required String title, required String content}) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      elevation: 8,
+      color: Colors.white,
+      shadowColor: Colors.tealAccent,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.teal,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              content,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              ),
+            ),
+          ],
         ),
       ),
     );
